@@ -1,7 +1,11 @@
+import Video from "@/myComponents/shared/Video";
+import AboutMe from "@/myComponents/uiComponent/AboutMe";
+
 const HomePage = () => {
   return (
     <div>
-      <h1>This is a home page</h1>
+      <Video></Video>
+      <AboutMe></AboutMe>
     </div>
   );
 };

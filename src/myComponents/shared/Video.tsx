@@ -7,9 +7,19 @@ import Link from "next/link";
 import { Typewriter } from "react-simple-typewriter";
 import Navbar from "./Navbar";
 import Modal from "../modals/NavModal";
+import { FcGoogle } from "react-icons/fc";
+import { signIn } from "next-auth/react";
+import ProfilePopOver from "../modals/ProfilePopOver";
 
-// text-[20px]
-const Video = () => {
+type UserProps = {
+  user?: {
+    name?: string | null | undefined;
+    email?: string | null | undefined;
+    image?: string | null | undefined;
+  };
+};
+
+const Video = ({ session }: { session: UserProps | null }) => {
   const [showModal, setShowModal] = useState(false);
   const [scrollY, setScrollY] = useState(0);
 
@@ -27,7 +37,7 @@ const Video = () => {
 
   return (
     <div className="relative h-screen w-full overflow-hidden">
-      {scrollY > 200 && <Navbar></Navbar>}
+      {scrollY > 200 && <Navbar session={session}></Navbar>}
       {/* Background Video */}
       <video
         autoPlay
@@ -83,11 +93,29 @@ const Video = () => {
             </div>
           </div>
           {/* icon */}
-          <div>
-            <RiMenu3Fill
-              onClick={() => setShowModal(true)}
-              className="font-medium text-3xl"
-            />
+          <div className="flex items-center h-10 gap-4">
+            <div>
+              <RiMenu3Fill
+                onClick={() => setShowModal(true)}
+                className="font-medium text-3xl"
+              />
+            </div>
+            {session?.user ? (
+              <div>
+                <ProfilePopOver session={session}></ProfilePopOver>
+              </div>
+            ) : (
+              <div>
+                <FcGoogle
+                  onClick={() =>
+                    signIn("google", {
+                      callbackUrl: "http://localhost:3000/dashboard",
+                    })
+                  }
+                  className="font-medium text-3xl"
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>

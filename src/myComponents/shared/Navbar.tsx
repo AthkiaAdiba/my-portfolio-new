@@ -4,8 +4,19 @@ import Link from "next/link";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 import { RiMenu3Fill } from "react-icons/ri";
 import Modal from "../modals/NavModal";
+import { FcGoogle } from "react-icons/fc";
+import { signIn } from "next-auth/react";
+import ProfilePopOver from "../modals/ProfilePopOver";
 
-const Navbar = () => {
+type UserProps = {
+  user?: {
+    name?: string | null | undefined;
+    email?: string | null | undefined;
+    image?: string | null | undefined;
+  };
+};
+
+const Navbar = ({ session }: { session: UserProps | null }) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -22,11 +33,30 @@ const Navbar = () => {
             <FaLinkedinIn className="font-medium text-3xl" />
           </Link>
         </div>
-        <div>
-          <RiMenu3Fill
-            onClick={() => setShowModal(true)}
-            className="font-medium text-3xl"
-          />
+        {/* icon */}
+        <div className="flex items-center h-10 gap-4">
+          <div>
+            <RiMenu3Fill
+              onClick={() => setShowModal(true)}
+              className="font-medium text-3xl"
+            />
+          </div>
+          {session?.user ? (
+            <div>
+              <ProfilePopOver session={session}></ProfilePopOver>
+            </div>
+          ) : (
+            <div>
+              <FcGoogle
+                onClick={() =>
+                  signIn("google", {
+                    callbackUrl: "http://localhost:3000/dashboard",
+                  })
+                }
+                className="font-medium text-3xl"
+              />
+            </div>
+          )}
         </div>
       </div>
       <Modal showModal={showModal} setShowModal={setShowModal} />

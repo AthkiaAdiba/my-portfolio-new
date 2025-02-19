@@ -1,3 +1,5 @@
+import Footer from "@/myComponents/shared/Footer";
+
 const CommonLayout = ({
   children,
 }: Readonly<{
@@ -7,6 +9,7 @@ const CommonLayout = ({
     <div>
       {/* <Navbar /> */}
       {children}
+      <Footer />
     </div>
   );
 };

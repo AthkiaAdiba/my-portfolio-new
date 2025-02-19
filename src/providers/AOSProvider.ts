@@ -11,5 +11,5 @@ export default function AOSProvider() {
     });
   }, []);
 
-  return null; // No UI, just initializes AOS
+  return null;
 }

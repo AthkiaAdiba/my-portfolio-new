@@ -5,7 +5,7 @@ import { FaCloudDownloadAlt } from "react-icons/fa";
 const AboutMe = () => {
   return (
     <div className="bg-[#22252c] pt-32 pb-28 flex flex-col lg:flex-row items-center justify-center lg:gap-16 xl:gap-28 px-2 lg:px-32 mx-auto">
-      <div data-aos="fade-right" data-aos-duration="2000">
+      <div data-aos="fade-right" data-aos-duration="2000" className="aos-init">
         <div className="relative h-[400px] w-full lg:w-[350px] border-8 border-[#1fb385]">
           <div className="absolute top-10 right-10 -left-8">
             <Image
@@ -32,7 +32,7 @@ const AboutMe = () => {
       <div
         data-aos="fade-left"
         data-aos-duration="2000"
-        className="space-y-4 text-white mt-0 lg:-mt-28 w-full lg:w-[500px]"
+        className="space-y-4 text-white mt-0 lg:-mt-28 w-full lg:w-[500px] aos-init"
       >
         <h4 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#1fb385] to-[#24dfde]">
           About Me

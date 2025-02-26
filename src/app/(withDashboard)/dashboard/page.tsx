@@ -34,16 +34,16 @@ const DashboardPage = async () => {
           </p>
           <div className="w-full space-y-2 p-2 mt-4 rounded-lg">
             {/* first row */}
-            <div className="text-lg text-black dark:text-white">
+            <div className="text-lg text-black">
               <p className="flex justify-center flex-col md:flex-row lg:flex-row font-semibold">
                 Name:
-                <span className="text-gray-600 ml-2 dark:text-white">
+                <span className="text-gray-600 dark:text-gray-800 ml-2">
                   {session?.user?.name}
                 </span>
               </p>
               <p className="flex justify-center flex-col md:flex-row lg:flex-row font-semibold">
                 Email:
-                <span className="text-gray-600 ml-2 dark:text-white">
+                <span className="text-gray-600 dark:text-gray-800 ml-2">
                   {session?.user?.email}
                 </span>
               </p>

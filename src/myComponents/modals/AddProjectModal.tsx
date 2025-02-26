@@ -108,7 +108,7 @@ const AddProjectModal = () => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="bg-gray-900 text-white rounded-none">
+        <Button className="bg-gray-900 dark:bg-white dark:text-black text-white rounded-none">
           Add Project
         </Button>
       </DialogTrigger>

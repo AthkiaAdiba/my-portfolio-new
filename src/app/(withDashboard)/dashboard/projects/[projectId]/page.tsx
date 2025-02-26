@@ -48,7 +48,7 @@ const ProjectDetailsPage = async ({
           {project?.features.map((list: string, index: number) => (
             <p key={index} className="text-lg flex items-start gap-5">
               <span className="inline-block">
-                <IoIosArrowForward className="text-gray-900" />
+                <IoIosArrowForward className="text-gray-900 dark:text-white" />
               </span>
               <span className="inline-block">{list}</span>
             </p>
@@ -56,24 +56,26 @@ const ProjectDetailsPage = async ({
         </div>
 
         <p className="flex gap-4 text-lg">
-          <GrTechnology className="text-3xl text-gray-900" />
+          <GrTechnology className="text-3xl text-gray-900 dark:text-white" />
           {project?.technologies}
         </p>
 
         <div className=" flex items-center gap-10 mt-5">
           <Link href={project?.liveLink} target="_blank">
             <p className="flex items-center gap-2 text-lg font-semibold">
-              <FaLink className="text-gray-900" /> Live Link
+              <FaLink className="text-gray-900 dark:text-white" /> Live Link
             </p>
           </Link>
           <Link href={project?.serverCodeLink} target="_blank">
             <p className="flex items-center gap-2 text-lg font-semibold">
-              <FaLink className="text-text-gray-900" /> Server Code Link
+              <FaLink className="text-gray-900 dark:text-white" /> Server Code
+              Link
             </p>
           </Link>
           <Link href={project?.clientCodeLink} target="_blank">
             <p className="flex items-center gap-2 text-lg font-semibold">
-              <FaLink className="text-gray-900" /> Client Code Link
+              <FaLink className="text-gray-900 dark:text-white" /> Client Code
+              Link
             </p>
           </Link>
         </div>

@@ -4,13 +4,13 @@ const Form = () => {
       <h4
         data-aos="zoom-in"
         data-aos-duration="2000"
-        className="mb-10 text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#1fb385] to-[#24dfde] text-center"
+        className="mb-10 text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#1fb385] to-[#24dfde] text-center aos-init"
       >
         CONTACT ME
       </h4>
       <section className="py-6 px-2 lg:px-[13%] pb-20 lg:pb-36">
         <form
-          className="flex flex-col py-6 space-y-6 md:py-0 md:px-6"
+          className="flex flex-col py-6 space-y-6 md:py-0 md:px-6 aos-init"
           data-aos="fade-up"
           data-aos-duration="2000"
         >

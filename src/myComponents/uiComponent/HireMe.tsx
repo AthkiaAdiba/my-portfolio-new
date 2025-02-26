@@ -7,10 +7,10 @@ const HireMe = () => {
       <div className="flex justify-center gap-0 md:gap-0 lg:gap-1 xl:gap-6">
         <div className="flex gap-0 md:gap-2 lg:gap-1 xl:gap-6">
           <div>
-            <FaPaperPlane className="text-5xl" />
+            <FaPaperPlane className="text-5xl dark:text-[#22252c]" />
           </div>
           <div>
-            <h1 className="text-xl md:text-3xl lg:text-4xl font-extrabold text-center">
+            <h1 className="text-xl md:text-3xl lg:text-4xl font-extrabold text-center dark:text-[#22252c]">
               HIRE ME FOR YOUR AWESOME PROJECT
             </h1>
           </div>
@@ -27,7 +27,9 @@ const HireMe = () => {
           </button>
         </Link>
       </div>
-      <p className="text-center text-lg">The button bellow will make it easy</p>
+      <p className="text-center text-lg dark:text-[#22252c]">
+        The button bellow will make it easy
+      </p>
       <Link
         href="https://www.linkedin.com/in/athkia-adiba-tonne/"
         target="_blank"

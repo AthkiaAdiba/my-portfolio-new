@@ -9,7 +9,7 @@ type NavModalProps = {
   setShowModal: (value: boolean) => void;
 };
 
-const Modal = ({ showModal, setShowModal }: NavModalProps) => {
+const NavModal = ({ showModal, setShowModal }: NavModalProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -85,6 +85,16 @@ const Modal = ({ showModal, setShowModal }: NavModalProps) => {
                   HIRE ME
                 </p>
               </Link>
+              <Link href="/projects" onClick={() => setShowModal(false)}>
+                <p className="text-3xl leading-relaxed text-white hover:text-[#00d7bb]">
+                  PROJECTS
+                </p>
+              </Link>
+              <Link href="/blogs" onClick={() => setShowModal(false)}>
+                <p className="text-3xl leading-relaxed text-white hover:text-[#00d7bb]">
+                  BLOGS
+                </p>
+              </Link>
             </div>
           </div>
         </div>
@@ -93,4 +103,4 @@ const Modal = ({ showModal, setShowModal }: NavModalProps) => {
   );
 };
 
-export default Modal;
+export default NavModal;

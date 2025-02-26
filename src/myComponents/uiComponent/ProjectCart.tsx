@@ -56,7 +56,7 @@ const ProjectCart = ({ project }: { project: TFetchedProject }) => {
           <div className="flex justify-end">
             <Button
               onClick={() => handleDeleteProject(project._id)}
-              className="mt-5 p-3 font-semibold tracking-wide rounded-none text-white dark:text-gray-50"
+              className="mt-5 p-3 font-semibold tracking-wide rounded-none text-white dark:bg-black"
             >
               Delete Project
             </Button>

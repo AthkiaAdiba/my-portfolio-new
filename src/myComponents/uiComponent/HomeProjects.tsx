@@ -1,6 +1,8 @@
 import { TFetchedProject } from "@/types/projectType";
 import { getAllProject } from "@/utils/actions/project";
 import HomeProjectCard from "./HomeProjectCard";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 const HomeProjects = async () => {
   const projectsData = await getAllProject();
@@ -28,6 +30,15 @@ const HomeProjects = async () => {
               project={project}
             ></HomeProjectCard>
           ))}
+        </div>
+
+        {/* button */}
+        <div className="flex justify-center -mt-24">
+          <Link href="/projects">
+            <Button className="mb-10 rounded-none text-xl px-10 py-6 text-[#00d7bb] hover:border hover:border-[#22252c] hover:bg-[#06b990] hover:text-[#22252c] dark:bg-[#22252c] dark:text-[#00d7bb] dark:hover:text-[#22252c] dark:hover:bg-[#06b990]">
+              LOAD MORE
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

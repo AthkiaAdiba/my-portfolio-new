@@ -19,12 +19,24 @@ const HomePage = async () => {
   return (
     <div>
       <Video session={session}></Video>
-      <AboutMe></AboutMe>
-      <Services></Services>
-      <Skills></Skills>
-      <HomeProjects></HomeProjects>
-      <Form></Form>
-      <HireMe></HireMe>
+      <div id="aboutMe">
+        <AboutMe></AboutMe>
+      </div>
+      <div id="services">
+        <Services></Services>
+      </div>
+      <div id="skills">
+        <Skills></Skills>
+      </div>
+      <div id="projects">
+        <HomeProjects></HomeProjects>
+      </div>
+      <div id="contact">
+        <Form></Form>
+      </div>
+      <div id="hireMe">
+        <HireMe></HireMe>
+      </div>
     </div>
   );
 };

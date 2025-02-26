@@ -37,7 +37,7 @@ const AboutMe = () => {
         <h4 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#1fb385] to-[#24dfde]">
           About Me
         </h4>
-        <p className="">
+        <p>
           Hello! I am a passionate web developer skilled in creating dynamic and
           seamless web experiences. Proficient in React.js, JavaScript, HTML,
           CSS, and Tailwind CSS, I bring innovative ideas to life. My backend

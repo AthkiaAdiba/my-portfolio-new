@@ -12,7 +12,6 @@ export const createProject = async (data: TProject) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-      cache: "no-store",
     }
   );
 
@@ -23,7 +22,9 @@ export const createProject = async (data: TProject) => {
 
 export const getAllProject = async () => {
   const res = await fetch(`${process.env.BACKEND_URL}/projects`, {
-    cache: "no-store",
+    next: {
+      revalidate: 30,
+    },
   });
 
   const projectsData = await res.json();
@@ -33,7 +34,9 @@ export const getAllProject = async () => {
 
 export const getSingleProject = async (id: string) => {
   const res = await fetch(`${process.env.BACKEND_URL}/projects/${id}`, {
-    cache: "no-store",
+    next: {
+      revalidate: 30,
+    },
   });
 
   const projectData = await res.json();
@@ -50,7 +53,6 @@ export const updateProject = async (data: any) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data.data),
-      cache: "no-store",
     }
   );
 
@@ -62,7 +64,6 @@ export const updateProject = async (data: any) => {
 export const deleteProject = async (id: string) => {
   const res = await fetch(`${process.env.BACKEND_URL}/projects/${id}`, {
     method: "DELETE",
-    cache: "no-store",
   });
 
   const projectData = await res.json();

@@ -8,6 +8,7 @@ import { useState } from "react";
 import { IoMdMenu } from "react-icons/io";
 import Link from "next/link";
 import Image from "next/image";
+import { ModeToggle } from "./ModeToggle";
 
 type UserProps = {
   user?: {
@@ -113,6 +114,9 @@ const Sidebar = ({ session }: { session: UserProps | null }) => {
               </li>
             ))}
           </ul>
+        </div>
+        <div className="pl-4">
+          <ModeToggle />
         </div>
       </div>
     </>

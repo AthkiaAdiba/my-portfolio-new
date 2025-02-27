@@ -8,6 +8,8 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Athkia Adiba Tonne | Blogs",
+  description:
+    "Read insightful blogs by Athkia Adiba Tonne on web development, Next.js, TypeScript, Node.js, Express, MongoDB, Mongoose, Redux, and more. Stay updated with coding tips, best practices, and industry trends.",
 };
 
 const DashboardBlogsPage = async () => {

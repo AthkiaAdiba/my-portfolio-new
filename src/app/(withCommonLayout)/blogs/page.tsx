@@ -10,6 +10,8 @@ import { IoIosArrowForward } from "react-icons/io";
 
 export const metadata: Metadata = {
   title: "Athkia Adiba Tonne | Blogs",
+  description:
+    "Read insightful blogs by Athkia Adiba Tonne on web development, Next.js, TypeScript, Node.js, Express, MongoDB, Mongoose, Redux, and more. Stay updated with coding tips, best practices, and industry trends.",
 };
 
 const BlogsPage = async () => {
@@ -21,7 +23,7 @@ const BlogsPage = async () => {
     <div>
       <ProjectsAndBlogsBanner session={session}></ProjectsAndBlogsBanner>
       <div className="min-h-screen px-2 lg:px-[13%] bg-[#22252c]">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 py-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5 py-24">
           {blogs?.map((blog: TFetchedBlog) => (
             <div key={blog?._id} className="bg-[#313741] flex flex-col h-full">
               <Image

@@ -41,8 +41,8 @@ const ProjectDetailsPage = async ({
     <div>
       <ProjectsAndBlogsBanner session={session}></ProjectsAndBlogsBanner>
       <div className="min-h-screen px-2 lg:px-[13%] bg-[#22252c]">
-        <div className="flex gap-6 pt-24">
-          <div className="h-[600px] w-[600px]">
+        <div className="flex flex-col xl:flex-row gap-6 pt-24 pb-16">
+          <div className="h-[600px] w-full xl:w-[600px]">
             <SwiperCard images={project?.image}></SwiperCard>
           </div>
           <div className="space-y-3">

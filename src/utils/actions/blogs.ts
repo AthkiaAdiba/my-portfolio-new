@@ -19,7 +19,9 @@ export const createBlog = async (data: TBlog) => {
 
 export const getAllBlogs = async () => {
   const res = await fetch(`${process.env.BACKEND_URL}/blogs`, {
-    cache: "no-store",
+    next: {
+      revalidate: 30,
+    },
   });
 
   const blogData = await res.json();
@@ -29,7 +31,9 @@ export const getAllBlogs = async () => {
 
 export const getSingleBlog = async (id: string) => {
   const res = await fetch(`${process.env.BACKEND_URL}/blogs/${id}`, {
-    cache: "no-store",
+    next: {
+      revalidate: 30,
+    },
   });
 
   const blogData = await res.json();

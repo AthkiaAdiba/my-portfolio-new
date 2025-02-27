@@ -29,7 +29,7 @@ const SwiperCard = ({ images }: any) => {
             width={1900}
             height={1900}
             alt="project img"
-            className="w-full h-[600px]"
+            className="w-full xl:w-[600px] h-[600px]"
           />
         </SwiperSlide>
       ))}

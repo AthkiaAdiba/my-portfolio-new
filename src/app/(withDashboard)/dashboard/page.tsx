@@ -1,6 +1,13 @@
 import { authOptions } from "@/utils/authOptions";
+import { Metadata } from "next";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Athkia Adiba Tonne | Dashboard",
+  description:
+    "Athkia Adiba Tonne – a passionate Full-Stack developer specializing in Next.js, TypeScript, Node.js, Express, MongoDB, Mongoose, and Redux. Crafting dynamic and scalable web applications with a focus on performance and user experience.",
+};
 
 const DashboardPage = async () => {
   const session = await getServerSession(authOptions);

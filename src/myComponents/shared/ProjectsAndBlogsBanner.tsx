@@ -93,13 +93,16 @@ const ProjectsAndBlogsBanner = ({ session }: { session: UserProps | null }) => {
           </div>
         </div>
       </div>
-      <div className="absolute z-10 mt-40 ml-32">
+      <div className="absolute z-10 mt-14 md:mt-20 lg:mt-40 xl:mt-40 ml-3 xl:ml-32">
         <h1 className="text-6xl font-semibold bg-gradient-to-r from-[#1fb385] to-[#24dfde] bg-clip-text text-transparent">
           Portfolios
         </h1>
         <p className="text-white w-4/5 mt-2">
-          Lorem ipsum dolor sit amet, consectetur eiusmod tempor incididunt ut
-          labore et dolore magna aliqua.
+          Hello! I am a passionate Full Stack developer skilled in creating
+          dynamic and seamless web experiences. Proficient in various
+          technologies, I bring innovative ideas to life. My backend expertise
+          includes Express.js, Node.js, JWT, Firebase, and MongoDB. Now, I am
+          exploring Next.js, and as proof, I made this portfolio with Next.js.
         </p>
       </div>
       <NavModal showModal={showModal} setShowModal={setShowModal} />

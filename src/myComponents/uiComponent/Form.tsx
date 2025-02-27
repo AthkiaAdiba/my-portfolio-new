@@ -1,4 +1,45 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+"use client";
+
+import { createEmail } from "@/utils/actions/email";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "sonner";
+
 const Form = () => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit: SubmitHandler<FieldValues> = async (formData) => {
+    const toastId = toast.loading("Sending Message", { duration: 2000 });
+
+    const emailData = {
+      name: formData.name,
+      email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+    };
+
+    try {
+      const res = await createEmail(emailData);
+      console.log(res);
+      if (!res.success) {
+        toast.error(res?.message, { id: toastId });
+        reset();
+      } else if (res.success) {
+        toast.success(res?.message, { id: toastId });
+        reset();
+      }
+    } catch (err: any) {
+      console.error(err.message);
+      toast.error("Something went wrong!", { id: toastId });
+      reset();
+    }
+  };
+
   return (
     <div className="text-white bg-[#22252c]">
       <h4
@@ -10,6 +51,7 @@ const Form = () => {
       </h4>
       <section className="py-6 px-2 lg:px-[13%] pb-20 lg:pb-36">
         <form
+          onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col py-6 space-y-6 md:py-0 md:px-6 aos-init"
           data-aos="fade-up"
           data-aos-duration="2000"
@@ -19,40 +61,47 @@ const Form = () => {
               <span className="mb-1">Name</span>
               <input
                 type="text"
-                name="user_name"
                 placeholder="Name"
                 className="block w-full rounded-md border-2 border-gray-500 py-2 pl-2 shadow-sm focus:ring focus:ring-[#02cfb4] bg-gray-500"
-                required
+                {...register("name", { required: true })}
               />
+              {errors.name && <p className="text-red-500">Name is required!</p>}
             </label>
             <label className="block flex-1">
               <span className="mb-1">Email</span>
               <input
                 type="email"
-                name="user_email"
                 placeholder="Email"
                 className="block w-full rounded-md border-2 border-gray-500 py-2 pl-2 shadow-sm focus:ring focus:ring-[#02cfb4] bg-gray-500"
-                required
+                {...register("email", { required: true })}
               />
+              {errors.email && (
+                <p className="text-red-500">Name is required!</p>
+              )}
             </label>
           </div>
           <label className="block">
             <span className="mb-1">Subject</span>
             <input
               type="text"
-              name="subject"
               placeholder="Subject"
               className="block w-full rounded-md border-2 border-gray-500 py-2 pl-2 shadow-sm focus:ring focus:ring-[#02cfb4] bg-gray-500"
-              required
+              {...register("subject", { required: true })}
             />
+            {errors.subject && (
+              <p className="text-red-500">Name is required!</p>
+            )}
           </label>
           <label className="block">
             <span className="mb-1">Message</span>
             <textarea
               rows={10}
-              name="message"
               className="block w-full rounded-md focus:ring focus:ring-[#02cfb4] bg-gray-500"
+              {...register("message", { required: true })}
             ></textarea>
+            {errors.subject && (
+              <p className="text-red-500">Name is required!</p>
+            )}
           </label>
           <button
             type="submit"

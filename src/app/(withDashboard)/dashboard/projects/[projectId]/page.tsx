@@ -35,7 +35,7 @@ const ProjectDetailsPage = async ({
   const project: TFetchedProject = projectData?.data;
 
   return (
-    <div className="flex gap-6 lg:pr-10">
+    <div className="flex flex-col lg:flex-row lg:gap-6 lg:pr-10">
       <div className="h-[600px] w-[600px]">
         <SwiperCard images={project?.image}></SwiperCard>
       </div>

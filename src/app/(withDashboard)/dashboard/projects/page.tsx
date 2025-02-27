@@ -6,6 +6,8 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Athkia Adiba Tonne | Projects",
+  description:
+    "Explore the web development projects of Athkia Adiba Tonne, featuring full-stack applications built with Next.js, TypeScript, Node.js, Express, MongoDB, Mongoose, and Redux. Showcasing dynamic, scalable, and user-friendly solutions for modern web experiences.",
 };
 
 const DashboardProjectsPage = async () => {

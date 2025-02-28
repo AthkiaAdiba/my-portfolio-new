@@ -260,7 +260,6 @@ const UpdateBlogModal = ({ blogId }: any) => {
                             date ? format(date, "yyyy-MM-dd") : null
                           )
                         }
-                        initialFocus
                       />
                     </PopoverContent>
                   </Popover>

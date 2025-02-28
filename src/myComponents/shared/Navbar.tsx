@@ -52,7 +52,8 @@ const Navbar = ({ session }: { session: UserProps | null }) => {
                 <FcGoogle
                   onClick={() =>
                     signIn("google", {
-                      callbackUrl: "http://localhost:3000/dashboard",
+                      callbackUrl:
+                        "https://my-portfolio-new-nine.vercel.app/dashboard",
                     })
                   }
                   className="font-medium text-3xl"

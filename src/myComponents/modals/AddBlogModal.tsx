@@ -251,7 +251,6 @@ const AddBlogModal = () => {
                             date ? format(date, "yyyy-MM-dd") : null
                           )
                         }
-                        initialFocus
                       />
                     </PopoverContent>
                   </Popover>
@@ -274,3 +273,46 @@ const AddBlogModal = () => {
 };
 
 export default AddBlogModal;
+
+{
+  /* <div>
+  <Label htmlFor="postDate" className="text-right font-semibold flex mb-2">
+    Blog Post Date:
+  </Label>
+  <Controller
+    name="postDate"
+    control={control}
+    defaultValue={null}
+    rules={{ required: "Blog date is required!" }}
+    render={({ field }) => (
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button
+            variant="outline"
+            className={`w-full justify-start text-left font-normal ${
+              !field.value && "text-muted-foreground"
+            }`}
+          >
+            <CalendarIcon className="mr-2" />
+            {field.value
+              ? format(new Date(field.value), "dd MMMM, yyyy").toUpperCase()
+              : "Pick a date"}
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-auto p-0" align="start">
+          <Calendar
+            mode="single"
+            selected={field.value ? new Date(field.value) : undefined}
+            onSelect={(date) =>
+              field.onChange(date ? format(date, "yyyy-MM-dd") : null)
+            }
+          />
+        </PopoverContent>
+      </Popover>
+    )}
+  />
+  {errors.postDate && (
+    <p className="text-red-500">{errors.postDate.message?.toString()}</p>
+  )}
+</div>; */
+}

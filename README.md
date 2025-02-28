@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio
 
-## Getting Started
+I am Athkia Adiba Tonne – a passionate Full-Stack developer specializing in Next.js, TypeScript, Node.js, Express, MongoDB, Mongoose, and Redux. Crafting dynamic and scalable web applications with a focus on performance and user experience. It is a Next.js project.
 
-First, run the development server:
+## 🚀 Fronted Live Demo
+
+https://my-portfolio-new-nine.vercel.app
+
+## 🚀 Backend Live Demo
+
+https://my-portfolio-server-alpha-ashen.vercel.app
+
+## ✨ Features
+
+- 🛠️ **CRUD Operations:** Full support for creating, reading, updating, and deleting projects and blogs.
+
+- 📦 **Error Handling:** If any error happens, error messages is provided.
+
+- ⚙️ **Scalable Design:** Built to handle growing demands and datasets. It is also a responsive application.
+
+## 🛠️ Technologies Used
+
+### Backend Framework
+
+- **Node.js:** High-performance runtime for building scalable applications.
+- **Express.js:** Framework for creating RESTful APIs efficiently.
+
+### Database
+
+- **MongoDB:** NoSQL database for secure and flexible data storage.
+- **Mongoose:** Elegant ODM for MongoDB, enabling schema validation and easy database interactions.
+
+### Development Tools
+
+- **TypeScript:** Ensures type safety, enhancing code maintainability.
+
+## ⚙️ Installation and Setup
+
+Follow these steps to set up and run the backend server locally:
+
+### Prerequisites
+
+- **Node.js** (v14 or higher)
+- **npm** (v6 or higher)
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/AthkiaAdiba/my-portfolio-new
+cd my-portfolio-new
+```
+
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Run the Fronted
+
+#### Development Mode
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### Production Mode
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+#### Production Mode Run
 
-## Learn More
+```bash
+npm start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🔗 Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `npm run dev`: Starts the development fronted with hot reloading.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `npm run build`: Compiles TypeScript into JavaScript.
 
-## Deploy on Vercel
+- `npm run lint`: Checks code for linting issues.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🤝 Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Contributions are welcome! To contribute:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes and commit (`git commit -m "Add feature"`)
+4. Push your changes (`git push origin feature-branch`).
+5. Open a Pull Request.
+
+## 📜 License

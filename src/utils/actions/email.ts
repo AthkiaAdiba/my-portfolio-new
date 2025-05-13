@@ -1,27 +1,50 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
 
+import { getValidToken } from "@/lib/verifyToken";
 import { TEmail } from "@/types/projectType";
+import { revalidateTag } from "next/cache";
 
 export const createEmail = async (data: TEmail) => {
-  const res = await fetch(`${process.env.BACKEND_URL}/emails/send-email`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_API}/emails/send-email`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
 
-  const emailData = await res.json();
+    const emailData = await res.json();
 
-  return emailData;
+    revalidateTag("emails");
+
+    return emailData;
+  } catch (error: any) {
+    return Error(error);
+  }
 };
 
 export const getAllEmails = async () => {
-  const res = await fetch(`${process.env.BACKEND_URL}/emails`, {
-    cache: "no-store",
-  });
+  const token = await getValidToken();
 
-  const emailData = await res.json();
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/emails`, {
+      headers: {
+        Authorization: token,
+      },
+      next: {
+        tags: ["emails"],
+      },
+    });
 
-  return emailData;
+    const emailData = await res.json();
+
+    return emailData;
+  } catch (error: any) {
+    return Error(error);
+  }
 };

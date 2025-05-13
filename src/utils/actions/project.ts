@@ -1,72 +1,113 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
 
+import { getValidToken } from "@/lib/verifyToken";
 import { TProject } from "@/types/projectType";
+import { revalidateTag } from "next/cache";
 
 export const createProject = async (data: TProject) => {
-  const res = await fetch(
-    `${process.env.BACKEND_URL}/projects/create-project`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }
-  );
+  const token = await getValidToken();
 
-  const projectData = await res.json();
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_API}/projects/create-project`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+        body: JSON.stringify(data),
+      }
+    );
 
-  return projectData;
+    const projectData = await res.json();
+    revalidateTag("projects");
+
+    return projectData;
+  } catch (error: any) {
+    return Error(error);
+  }
 };
 
 export const getAllProject = async () => {
-  const res = await fetch(`${process.env.BACKEND_URL}/projects`, {
-    next: {
-      revalidate: 30,
-    },
-  });
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/projects`, {
+      next: {
+        tags: ["projects"],
+      },
+    });
 
-  const projectsData = await res.json();
+    const projectsData = await res.json();
 
-  return projectsData;
+    return projectsData;
+  } catch (error: any) {
+    return Error(error);
+  }
 };
 
 export const getSingleProject = async (id: string) => {
-  const res = await fetch(`${process.env.BACKEND_URL}/projects/${id}`, {
-    next: {
-      revalidate: 30,
-    },
-  });
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_API}/projects/${id}`,
+      {
+        next: {
+          tags: ["projects"],
+        },
+      }
+    );
 
-  const projectData = await res.json();
+    const projectData = await res.json();
 
-  return projectData;
+    return projectData;
+  } catch (error: any) {
+    return Error(error);
+  }
 };
 
 export const updateProject = async (data: any) => {
-  const res = await fetch(
-    `${process.env.BACKEND_URL}/projects/${data.projectId}`,
-    {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data.data),
-    }
-  );
+  const token = await getValidToken();
 
-  const projectData = await res.json();
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_API}/projects/${data.projectId}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+        body: JSON.stringify(data.data),
+      }
+    );
 
-  return projectData;
+    const projectData = await res.json();
+    revalidateTag("projects");
+
+    return projectData;
+  } catch (error: any) {
+    return Error(error);
+  }
 };
 
 export const deleteProject = async (id: string) => {
-  const res = await fetch(`${process.env.BACKEND_URL}/projects/${id}`, {
-    method: "DELETE",
-  });
+  const token = await getValidToken();
 
-  const projectData = await res.json();
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_API}/projects/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
 
-  return projectData;
+    const projectData = await res.json();
+    revalidateTag("projects");
+    return projectData;
+  } catch (error: any) {
+    return Error(error);
+  }
 };

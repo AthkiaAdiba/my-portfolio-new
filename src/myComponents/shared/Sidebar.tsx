@@ -9,39 +9,33 @@ import { IoMdMenu } from "react-icons/io";
 import Link from "next/link";
 import Image from "next/image";
 import { ModeToggle } from "./ModeToggle";
+import { useUser } from "@/context/UserContext";
 
-type UserProps = {
-  user?: {
-    name?: string | null | undefined;
-    email?: string | null | undefined;
-    image?: string | null | undefined;
-  };
-};
-
-const Sidebar = ({ session }: { session: UserProps | null }) => {
+const Sidebar = () => {
   const [openSidebar, setOpenSidebar] = useState(false);
+  const { user } = useUser();
 
-  const userRoutes = [
+  const adminRoutes = [
     {
-      path: `/dashboard`,
-      name: "Dashboard",
+      path: `/dashboard/admin`,
+      name: "Profile",
       id: 1,
       icon: <MdDashboard />,
     },
     {
-      path: `/dashboard/blogs`,
+      path: `/dashboard/admin/blogs`,
       name: "Blog Management",
       id: 2,
       icon: <FaMicroblog />,
     },
     {
-      path: `/dashboard/projects`,
+      path: `/dashboard/admin/projects`,
       name: "Project Management",
       id: 3,
       icon: <GrProjects />,
     },
     {
-      path: `/dashboard/messages`,
+      path: `/dashboard/admin/messages`,
       name: "Message Management ",
       id: 4,
       icon: <FiMessageSquare />,
@@ -84,7 +78,7 @@ const Sidebar = ({ session }: { session: UserProps | null }) => {
         <div className="flex items-center p-2 space-x-4">
           <Image
             src={
-              session?.user?.image ||
+              user?.image ||
               "https://res.cloudinary.com/dv6fgvj2c/image/upload/v1738848037/aw31zjonlmq96og1bm3k.png"
             }
             alt="user image"
@@ -93,10 +87,10 @@ const Sidebar = ({ session }: { session: UserProps | null }) => {
             className="rounded-full bg-white"
           />
           <div>
-            <h2 className="text-lg font-semibold">{session?.user?.name}</h2>
+            <h2 className="text-lg font-semibold">{user?.name}</h2>
             <span className="flex items-center space-x-1">
               <Link
-                href="/dashboard"
+                href="/dashboard/admin"
                 className="text-base hover:underline text-gray-400"
               >
                 View profile
@@ -107,7 +101,7 @@ const Sidebar = ({ session }: { session: UserProps | null }) => {
         {/* Navigation Links */}
         <div className="divide-y divide-gray-700">
           <ul className="pt-2 pb-4 pl-4 space-y-4 text-sm">
-            {userRoutes.map((route) => (
+            {adminRoutes.map((route) => (
               <li key={route.id} className="flex items-center gap-2 text-lg">
                 {route.icon}
                 <Link href={route.path}>{route.name}</Link>

@@ -4,10 +4,9 @@ import Link from "next/link";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 import { RiMenu3Fill } from "react-icons/ri";
 import NavModal from "../modals/NavModal";
-import { FcGoogle } from "react-icons/fc";
-import { signIn } from "next-auth/react";
 import ProfilePopOver from "../modals/ProfilePopOver";
 import { ModeToggle } from "./ModeToggle";
+import { useUser } from "@/context/UserContext";
 
 type UserProps = {
   user?: {
@@ -19,9 +18,10 @@ type UserProps = {
 
 const Navbar = ({ session }: { session: UserProps | null }) => {
   const [showModal, setShowModal] = useState(false);
+  const { user } = useUser();
 
   return (
-    <div className="fixed z-40 shadow-lg top-0 left-0 right-0 py-5 bg-gradient-to-r from-[#1fb486] to-[#28ddd5] text-white text-center px-2 lg:px-32">
+    <div className="fixed z-40 shadow-lg top-0 w-full py-5 bg-gradient-to-r from-[#1fb486] to-[#28ddd5] text-white text-center px-2 lg:px-32">
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-4">
           <Link href="https://github.com/AthkiaAdiba" target="_blank">
@@ -43,22 +43,16 @@ const Navbar = ({ session }: { session: UserProps | null }) => {
             />
           </div>
           <div>
-            {session?.user ? (
+            {session?.user || user ? (
               <div>
                 <ProfilePopOver session={session}></ProfilePopOver>
               </div>
             ) : (
-              <div>
-                <FcGoogle
-                  onClick={() =>
-                    signIn("google", {
-                      callbackUrl:
-                        "https://my-portfolio-new-nine.vercel.app/dashboard",
-                    })
-                  }
-                  className="font-medium text-3xl"
-                />
-              </div>
+              <Link href="/login">
+                <button className="w-full flex items-center justify-center gap-2 bg-[#22252c] text-white py-2 px-4 rounded-none font-semibold text-lg text-center hover:bg-[#28ddd5] transition-colors hover:text-black">
+                  Sign In
+                </button>
+              </Link>
             )}
           </div>
           <div>

@@ -48,10 +48,10 @@ const BlogDetailsPage = async ({
             />
 
             <div className="mt-7 space-y-5 px-6">
-              <h1 className="text-5xl font-bold text-[#00d7bb]">
+              <h1 className="text-3xl md:text-5xl font-bold text-[#00d7bb]">
                 {blog?.title}
               </h1>
-              <p className="text-xl font-semibold text-[#00d7bb]">
+              <p className="text-lg md:text-xl font-semibold text-[#00d7bb]">
                 {moment(blog?.postDate).format("DD MMMM, YYYY").toUpperCase()} /
                 <span className="ml-2">{blog?.category}</span>
               </p>
@@ -59,7 +59,7 @@ const BlogDetailsPage = async ({
                 {blog?.content
                   .split("\n")
                   .map((line: string, index: number) => (
-                    <p key={index} className="mb-4 text-xl">
+                    <p key={index} className="mb-4 text-base md:text-xl">
                       {line}
                     </p>
                   ))}

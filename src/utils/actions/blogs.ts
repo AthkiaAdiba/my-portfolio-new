@@ -1,66 +1,107 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
 
+import { getValidToken } from "@/lib/verifyToken";
 import { TBlog } from "@/types/projectType";
+import { revalidateTag } from "next/cache";
 
 export const createBlog = async (data: TBlog) => {
-  const res = await fetch(`${process.env.BACKEND_URL}/blogs/create-blog`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
+  const token = await getValidToken();
 
-  const blogData = await res.json();
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_API}/blogs/create-blog`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+        body: JSON.stringify(data),
+      }
+    );
 
-  return blogData;
+    const blogData = await res.json();
+    revalidateTag("blogs");
+
+    return blogData;
+  } catch (error: any) {
+    return Error(error);
+  }
 };
 
 export const getAllBlogs = async () => {
-  const res = await fetch(`${process.env.BACKEND_URL}/blogs`, {
-    next: {
-      revalidate: 30,
-    },
-  });
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blogs`, {
+      next: {
+        tags: ["blogs"],
+      },
+    });
 
-  const blogData = await res.json();
+    const blogData = await res.json();
 
-  return blogData;
+    return blogData;
+  } catch (error: any) {
+    return Error(error);
+  }
 };
 
 export const getSingleBlog = async (id: string) => {
-  const res = await fetch(`${process.env.BACKEND_URL}/blogs/${id}`, {
-    next: {
-      revalidate: 30,
-    },
-  });
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blogs/${id}`, {
+      next: {
+        tags: ["blogs"],
+      },
+    });
 
-  const blogData = await res.json();
+    const blogData = await res.json();
 
-  return blogData;
+    return blogData;
+  } catch (error: any) {
+    return Error(error);
+  }
 };
 
 export const updateBlog = async (data: any) => {
-  const res = await fetch(`${process.env.BACKEND_URL}/blogs/${data.blogId}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data.data),
-  });
+  const token = await getValidToken();
 
-  const blogData = await res.json();
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_API}/blogs/${data.blogId}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+        body: JSON.stringify(data.data),
+      }
+    );
 
-  return blogData;
+    const blogData = await res.json();
+    revalidateTag("blogs");
+
+    return blogData;
+  } catch (error: any) {
+    return Error(error);
+  }
 };
 
 export const deleteBlog = async (id: string) => {
-  const res = await fetch(`${process.env.BACKEND_URL}/blogs/${id}`, {
-    method: "DELETE",
-  });
+  const token = await getValidToken();
 
-  const blogData = await res.json();
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blogs/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: token,
+      },
+    });
 
-  return blogData;
+    const blogData = await res.json();
+    revalidateTag("blogs");
+    return blogData;
+  } catch (error: any) {
+    return Error(error);
+  }
 };

@@ -56,7 +56,10 @@ const ProjectDetailsPage = async ({
             <div>
               <p className="text-xl font-semibold text-[#00d7bb]">Features:</p>
               {project?.features.map((list: string, index: number) => (
-                <p key={index} className="text-lg flex items-start gap-5">
+                <p
+                  key={index}
+                  className="text-base lg:text-lg flex items-start gap-5"
+                >
                   <span className="inline-block">
                     <IoIosArrowForward className="text-[#00d7bb]" />
                   </span>
@@ -65,24 +68,24 @@ const ProjectDetailsPage = async ({
               ))}
             </div>
 
-            <p className="flex gap-4 text-lg text-white">
-              <GrTechnology className="text-7xl text-[#00d7bb]" />
+            <p className="flex gap-4 text-base lg:text-lg text-white">
+              <GrTechnology className="text-7xl md:text-2xl xl:text-5xl text-[#00d7bb]" />
               {project?.technologies}
             </p>
 
-            <div className="flex items-center gap-6 mt-5 text-[#00d7bb]">
+            <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6 mt-5 text-[#00d7bb]">
               <Link href={project?.liveLink} target="_blank">
-                <p className="flex items-center gap-2 text-lg font-semibold">
+                <p className="flex text-start items-center gap-2 text-base lg:text-lg font-semibold">
                   <FaLink className="text-[#00d7bb]" /> Live Link
                 </p>
               </Link>
               <Link href={project?.serverCodeLink} target="_blank">
-                <p className="flex items-center gap-2 text-lg font-semibold">
+                <p className="flex items-center gap-2 text-base lg:text-lg font-semibold">
                   <FaLink className="text-[#00d7bb]" /> Server Code Link
                 </p>
               </Link>
               <Link href={project?.clientCodeLink} target="_blank">
-                <p className="flex items-center gap-2 text-lg font-semibold">
+                <p className="flex items-center gap-2 text-base lg:text-lg font-semibold">
                   <FaLink className="text-[#00d7bb]" /> Client Code Link
                 </p>
               </Link>

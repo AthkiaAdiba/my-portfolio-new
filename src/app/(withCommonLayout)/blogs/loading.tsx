@@ -2,7 +2,7 @@ import Spinner from "@/myComponents/shared/Spinner";
 
 const ProjectsLoadingPage = () => {
   return (
-    <div>
+    <div className="bg-[#22252c]">
       <Spinner />
     </div>
   );

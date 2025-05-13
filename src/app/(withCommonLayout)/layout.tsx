@@ -14,7 +14,6 @@ const CommonLayout = ({
 }>) => {
   return (
     <div>
-      {/* <Navbar /> */}
       {children}
       <Footer />
     </div>

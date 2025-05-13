@@ -1,6 +1,5 @@
-import { authOptions } from "@/utils/authOptions";
+import { getCurrentUser } from "@/utils/actions/auth";
 import { Metadata } from "next";
-import { getServerSession } from "next-auth";
 import Image from "next/image";
 
 export const metadata: Metadata = {
@@ -9,8 +8,8 @@ export const metadata: Metadata = {
     "Athkia Adiba Tonne – a passionate Full-Stack developer specializing in Next.js, TypeScript, Node.js, Express, MongoDB, Mongoose, and Redux. Crafting dynamic and scalable web applications with a focus on performance and user experience.",
 };
 
-const DashboardPage = async () => {
-  const session = await getServerSession(authOptions);
+const AdminDashboardPage = async () => {
+  const user = await getCurrentUser();
 
   return (
     <div className="mt-0 lg:mt-10 flex justify-center items-center">
@@ -26,7 +25,7 @@ const DashboardPage = async () => {
           <a href="#" className="relative block">
             <Image
               src={
-                session?.user?.image ||
+                user?.image ||
                 "https://res.cloudinary.com/dv6fgvj2c/image/upload/v1738848037/aw31zjonlmq96og1bm3k.png"
               }
               alt="user image"
@@ -45,31 +44,16 @@ const DashboardPage = async () => {
               <p className="flex justify-center flex-col md:flex-row lg:flex-row font-semibold">
                 Name:
                 <span className="text-gray-600 dark:text-gray-800 ml-2">
-                  {session?.user?.name}
+                  {user?.name}
                 </span>
               </p>
               <p className="flex justify-center flex-col md:flex-row lg:flex-row font-semibold">
                 Email:
                 <span className="text-gray-600 dark:text-gray-800 ml-2">
-                  {session?.user?.email}
+                  {user?.userEmail}
                 </span>
               </p>
             </div>
-            {/* second row */}
-            {/* <div className="flex flex-wrap items-center justify-between text-lg text-black dark:text-white">
-              <p className="flex flex-col md:flex-row lg:flex-row font-semibold">
-                Address:
-                <span className="text-gray-600 ml-2 dark:text-white">
-                  {singleUser?.data?.address}
-                </span>
-              </p>
-              <p className="flex flex-col md:flex-row lg:flex-row font-semibold">
-                Phone:
-                <span className="text-start text-gray-600 ml-2 dark:text-white">
-                  {singleUser?.data?.phone}
-                </span>
-              </p>
-            </div> */}
           </div>
         </div>
       </div>
@@ -77,4 +61,4 @@ const DashboardPage = async () => {
   );
 };
 
-export default DashboardPage;
+export default AdminDashboardPage;

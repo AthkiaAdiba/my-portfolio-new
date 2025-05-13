@@ -7,10 +7,9 @@ import Link from "next/link";
 import { Typewriter } from "react-simple-typewriter";
 import Navbar from "./Navbar";
 import NavModal from "../modals/NavModal";
-import { FcGoogle } from "react-icons/fc";
-import { signIn } from "next-auth/react";
 import ProfilePopOver from "../modals/ProfilePopOver";
 import { ModeToggle } from "./ModeToggle";
+import { useUser } from "@/context/UserContext";
 
 type UserProps = {
   user?: {
@@ -23,6 +22,7 @@ type UserProps = {
 const Video = ({ session }: { session: UserProps | null }) => {
   const [showModal, setShowModal] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  const { user } = useUser();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,46 +54,21 @@ const Video = ({ session }: { session: UserProps | null }) => {
       <div className="absolute inset-0 bg-gradient-to-r from-[#1fb486] to-[#28ddd5] opacity-80 z-10"></div>
 
       {/* Text Content */}
-      <div className="absolute inset-0 z-20 text-white px-2 lg:px-32">
-        <div className="pt-[5%] flex justify-between">
-          {/* item */}
-          <div>
-            <div className="flex items-center gap-4">
-              <Link href="https://github.com/AthkiaAdiba" target="_blank">
-                <FaGithub className="font-medium text-3xl" />
-              </Link>
-              {/* <FaFacebookF className='font-medium text-3xl' />
-                            <IoLogoTwitter className='font-medium text-3xl' /> */}
-              <Link
-                href="https://www.linkedin.com/in/athkia-adiba-tonne/"
-                target="_blank"
-              >
-                <FaLinkedinIn className="font-medium text-3xl" />
-              </Link>
-            </div>
-            <div className="mt-[5%] text-start">
-              <h1 className="text-[80px] md:text-[120px] lg:text-[120px] font-extralight">
-                Hello!
-              </h1>
-              <p className="text-[150%] md:text-[300%] lg:text-[400%] font-normal">
-                I am Athkia Adiba Tonne
-              </p>
-              <p className="text-3xl font-light">
-                <Typewriter
-                  words={[
-                    "Front-end Developer",
-                    "Junior Full-Stack",
-                    "Junior React Developer",
-                  ]}
-                  loop={5}
-                  typeSpeed={70}
-                  deleteSpeed={50}
-                  delaySpeed={1000}
-                />
-              </p>
-            </div>
+      <div className="absolute inset-0 z-20 text-white px-2 lg:px-[5%]">
+        <div className="flex justify-between items-center mt-[5%]">
+          {/* write side */}
+          <div className="flex items-center gap-4">
+            <Link href="https://github.com/AthkiaAdiba" target="_blank">
+              <FaGithub className="font-medium text-3xl" />
+            </Link>
+            <Link
+              href="https://www.linkedin.com/in/athkia-adiba-tonne/"
+              target="_blank"
+            >
+              <FaLinkedinIn className="font-medium text-3xl" />
+            </Link>
           </div>
-          {/* icon */}
+          {/* left side */}
           <div className="flex items-center h-10 gap-3">
             <div>
               <RiMenu3Fill
@@ -102,21 +77,17 @@ const Video = ({ session }: { session: UserProps | null }) => {
               />
             </div>
             <div>
-              {session?.user ? (
+              {session?.user || user ? (
                 <div>
                   <ProfilePopOver session={session}></ProfilePopOver>
                 </div>
               ) : (
                 <div>
-                  <FcGoogle
-                    onClick={() =>
-                      signIn("google", {
-                        callbackUrl:
-                          "https://my-portfolio-new-nine.vercel.app/dashboard",
-                      })
-                    }
-                    className="font-medium text-3xl"
-                  />
+                  <Link href="/login">
+                    <button className="bg-[#22252c] text-white md:py-2 px-2 md:px-4 rounded-none font-semibold text-base md:text-lg text-center hover:bg-[#28ddd5] transition-colors hover:text-black">
+                      Sign In
+                    </button>
+                  </Link>
                 </div>
               )}
             </div>
@@ -124,6 +95,30 @@ const Video = ({ session }: { session: UserProps | null }) => {
               <ModeToggle />
             </div>
           </div>
+        </div>
+
+        {/* texts */}
+        <div className="mt-[1%] text-start">
+          <h1 className="text-[70px] md:text-[120px] lg:text-[120px] font-extralight">
+            Hello!
+          </h1>
+          <p className="text-[200%] md:-mt-7 md:text-[300%] lg:text-[400%] font-normal">
+            I am Athkia Adiba Tonne
+          </p>
+          <p className="text-2xl md:text-4xl mt-3 font-light">
+            <Typewriter
+              words={[
+                "Front-end Developer",
+                "Full-Stack Developer",
+                "React Developer",
+                "Backend Developer",
+              ]}
+              loop={5}
+              typeSpeed={70}
+              deleteSpeed={50}
+              delaySpeed={1000}
+            />
+          </p>
         </div>
       </div>
       <NavModal showModal={showModal} setShowModal={setShowModal} />

@@ -41,7 +41,7 @@ const DashboardBlogsPage = async () => {
                   <p className="text-lg mt-3 mb-5">
                     {blog?.content.slice(0, 158)}...
                     <Link
-                      href={`/dashboard/blogs/${blog._id}`}
+                      href={`/dashboard/admin/blogs/${blog._id}`}
                       className="underline font-semibold"
                     >
                       Read more

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -47,7 +46,7 @@ const ProjectCart = ({ project }: { project: TFetchedProject }) => {
           <p className="dark:text-gray-800">
             {project?.projectDescription.slice(0, 100)}
             <Link
-              href={`/dashboard/projects/${project._id}`}
+              href={`/dashboard/admin/projects/${project._id}`}
               className="underline font-semibold"
             >
               Read more

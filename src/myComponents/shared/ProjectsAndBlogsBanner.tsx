@@ -6,16 +6,16 @@ import { useEffect, useState } from "react";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { RiMenu3Fill } from "react-icons/ri";
 import ProfilePopOver from "../modals/ProfilePopOver";
-import { FcGoogle } from "react-icons/fc";
-import { signIn } from "next-auth/react";
 import { ModeToggle } from "./ModeToggle";
 import NavModal from "../modals/NavModal";
 import { UserProps } from "@/types/projectType";
 import Navbar from "./Navbar";
+import { useUser } from "@/context/UserContext";
 
 const ProjectsAndBlogsBanner = ({ session }: { session: UserProps | null }) => {
   const [showModal, setShowModal] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  const { user } = useUser();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,8 +51,6 @@ const ProjectsAndBlogsBanner = ({ session }: { session: UserProps | null }) => {
               <Link href="https://github.com/AthkiaAdiba" target="_blank">
                 <FaGithub className="font-medium text-3xl" />
               </Link>
-              {/* <FaFacebookF className='font-medium text-3xl' />
-                            <IoLogoTwitter className='font-medium text-3xl' /> */}
               <Link
                 href="https://www.linkedin.com/in/athkia-adiba-tonne/"
                 target="_blank"
@@ -70,22 +68,16 @@ const ProjectsAndBlogsBanner = ({ session }: { session: UserProps | null }) => {
               />
             </div>
             <div>
-              {session?.user ? (
+              {session?.user || user ? (
                 <div>
                   <ProfilePopOver session={session}></ProfilePopOver>
                 </div>
               ) : (
-                <div>
-                  <FcGoogle
-                    onClick={() =>
-                      signIn("google", {
-                        callbackUrl:
-                          "https://my-portfolio-new-nine.vercel.app/dashboard",
-                      })
-                    }
-                    className="font-medium text-3xl"
-                  />
-                </div>
+                <Link href="/login">
+                  <button className="w-full flex items-center justify-center gap-2 bg-[#22252c] text-white py-2 px-4 rounded-none font-semibold text-lg text-center hover:bg-[#28ddd5] transition-colors hover:text-black">
+                    Sign In
+                  </button>
+                </Link>
               )}
             </div>
             <div>
@@ -101,9 +93,7 @@ const ProjectsAndBlogsBanner = ({ session }: { session: UserProps | null }) => {
         <p className="text-white w-4/5 mt-2">
           Hello! I am a passionate Full Stack developer skilled in creating
           dynamic and seamless web experiences. Proficient in various
-          technologies, I bring innovative ideas to life. My backend expertise
-          includes Express.js, Node.js, JWT, Firebase, and MongoDB. Now, I am
-          exploring Next.js, and as proof, I made this portfolio with Next.js.
+          technologies, I bring innovative ideas to life.
         </p>
       </div>
       <NavModal showModal={showModal} setShowModal={setShowModal} />

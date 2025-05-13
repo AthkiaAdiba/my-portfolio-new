@@ -34,7 +34,7 @@ const HireMe = () => {
         href="https://www.linkedin.com/in/athkia-adiba-tonne/"
         target="_blank"
       >
-        <button className="block lg:hidden px-8 py-3 text-lg bg-[#22252c] text-[#02cfb4] hover:bg-[#02cfb4] hover:border-2  hover:border-[#22252c] hover:text-white">
+        <button className="block lg:hidden mx-auto mt-5 px-8 py-3 text-lg bg-[#22252c] text-[#02cfb4] hover:bg-[#02cfb4] hover:border-2  hover:border-[#22252c] hover:text-white">
           HIRE ME
         </button>
       </Link>

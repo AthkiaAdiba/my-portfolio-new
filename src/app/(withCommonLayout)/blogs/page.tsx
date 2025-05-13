@@ -35,7 +35,7 @@ const BlogsPage = async () => {
               />
 
               <div className="p-6 flex flex-col flex-grow">
-                <h1 className="text-[#00d7bb] text-4xl font-semibold">
+                <h1 className="text-[#00d7bb] text-3xl md:text-4xl font-semibold">
                   {blog?.title}
                 </h1>
                 <p className="text-slate-200 mt-3 mb-5">

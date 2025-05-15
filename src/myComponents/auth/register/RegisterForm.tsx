@@ -326,7 +326,7 @@ const RegisterForm = () => {
             <button
               onClick={() =>
                 signIn("google", {
-                  callbackUrl: "http://localhost:3000",
+                  callbackUrl: "https://my-portfolio-new-nine.vercel.app",
                 })
               }
               className="mt-4 w-full flex items-center justify-center gap-2 bg-[#05c7ae] text-white py-4 px-8 rounded-none font-semibold text-lg uppercase text-center hover:bg-[#04b09a] transition-colors"

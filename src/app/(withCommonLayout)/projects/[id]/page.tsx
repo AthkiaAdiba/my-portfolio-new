@@ -25,7 +25,7 @@ export async function generateMetadata({
     description: project.projectDescription,
   };
 }
-
+// flex flex-col xl:flex-row gap-6
 const ProjectDetailsPage = async ({
   params,
 }: {
@@ -41,11 +41,11 @@ const ProjectDetailsPage = async ({
     <div>
       <ProjectsAndBlogsBanner session={session}></ProjectsAndBlogsBanner>
       <div className="min-h-screen px-2 lg:px-[13%] bg-[#22252c]">
-        <div className="flex flex-col xl:flex-row gap-6 pt-24 pb-16">
-          <div className="h-[600px] w-full xl:w-[600px]">
+        <div className="pt-24 pb-16">
+          <div className="h-[600px] w-full">
             <SwiperCard images={project?.image}></SwiperCard>
           </div>
-          <div className="space-y-3">
+          <div className="space-y-3 mt-8">
             <h1 className="text-4xl font-bold text-[#00d7bb]">
               {project?.projectName}
             </h1>

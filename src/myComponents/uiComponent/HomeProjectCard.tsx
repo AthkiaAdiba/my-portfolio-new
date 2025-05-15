@@ -24,14 +24,19 @@ const HomeProjectCard = ({ project }: any) => {
           </h2>
           <p className="text-slate-400">{project?.projectDescription}</p>
           <p className="">Features:</p>
-          {project?.features.map((list: string, index: number) => (
-            <p key={index} className="flex items-start gap-5">
-              <span className="inline-block">
-                <IoIosArrowForward className="text-[#00d7bb]" />
-              </span>
-              <span className="inline-block">{list}</span>
-            </p>
-          ))}
+          {project?.features
+            ?.slice(0, 3)
+            ?.map((list: string, index: number) => (
+              <p key={index} className="flex items-start gap-5">
+                <span className="inline-block">
+                  <IoIosArrowForward className="text-[#00d7bb]" />
+                </span>
+                <span className="inline-block">{list}</span>{" "}
+              </p>
+            ))}
+          <span className="text-[#00d7bb] font-semibold pt-5">
+            Read More...
+          </span>
           <p className="flex gap-4">
             <GrTechnology className="text-6xl text-[#00d7bb]" />
             {project?.technologies}

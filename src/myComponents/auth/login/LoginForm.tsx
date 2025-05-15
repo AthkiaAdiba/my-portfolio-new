@@ -120,7 +120,7 @@ const LoginForm = () => {
             <button
               onClick={() =>
                 signIn("google", {
-                  callbackUrl: "http://localhost:3000",
+                  callbackUrl: "https://my-portfolio-new-nine.vercel.app",
                   // "https://my-portfolio-new-nine.vercel.app/dashboard",
                 })
               }

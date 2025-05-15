@@ -17,13 +17,13 @@ const AboutMe = () => {
                 width={320}
                 height={320}
                 alt="Part image"
-                src={"/my_image.jpg"}
+                src={"/2 Inchi.jpg"}
               />
             </div>
           </div>
           <div className="mt-16 lg:mt-32">
             <Link
-              href="/athkia_adiba_tonne_resume.pdf"
+              href="/Resume2 (2).pdf"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -42,14 +42,16 @@ const AboutMe = () => {
             </h4>
             <p className="text-lg font-thin">
               I am a Full-Stack Web Developer with hands-on experience in
-              building responsive and dynamic web applications. My tech stack
-              includes HTML, CSS, JavaScript, TypeScript, React.js, Next.js,
-              Redux, Node.js, Express.js, MongoDB, Mongoose, SQL, PostgreSQL,
-              Prisma, and Tailwind CSS. I’m passionate about transforming ideas
-              into impactful digital solutions and continuously expanding my
-              skills. Alongside full-stack development, I’m actively exploring
-              Docker, AWS, Vitest, Jest, and GraphQL, to become a well-rounded
-              developer with strong DevOps capabilities.
+              building responsive, user-friendly, and dynamic web applications.
+              My tech stack includes HTML, CSS, JavaScript, TypeScript,
+              React.js, Next.js, Redux, Node.js, Express.js, MongoDB, Mongoose,
+              SQL, PostgreSQL, Prisma, and Tailwind CSS. I’m passionate about
+              transforming ideas into impactful digital solutions and
+              continuously expanding my skills. Alongside full-stack
+              development, I’m want to explore Docker, Kubernetes, Cloud
+              infrastructure, Linux system operations, Microsoft Azure, AWS,
+              Vitest, Jest, and GraphQL, to become a well-rounded developer with
+              strong DevOps capabilities.
             </p>
           </div>
         </div>

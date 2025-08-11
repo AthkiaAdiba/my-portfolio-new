@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Image from "next/image";
 import Link from "next/link";
-import { FaLink } from "react-icons/fa";
-import { GrTechnology } from "react-icons/gr";
 import { IoIosArrowForward } from "react-icons/io";
 
 const HomeProjectCard = ({ project }: any) => {
@@ -34,30 +32,12 @@ const HomeProjectCard = ({ project }: any) => {
                 <span className="inline-block">{list}</span>{" "}
               </p>
             ))}
-          <span className="text-[#00d7bb] font-semibold pt-5">
-            Read More...
-          </span>
-          <p className="flex gap-4">
-            <GrTechnology className="text-6xl text-[#00d7bb]" />
-            {project?.technologies}
-          </p>
-          <div className=" flex items-center gap-10 mt-5">
-            <Link href={project?.liveLink} target="_blank">
-              <p className="flex items-center gap-2">
-                <FaLink className="text-[#00d7bb]" /> Live Link
-              </p>
-            </Link>
-            <Link href={project?.serverCodeLink} target="_blank">
-              <p className="flex items-center gap-2">
-                <FaLink className="text-[#00d7bb]" /> Server Code Link
-              </p>
-            </Link>
-            <Link href={project?.clientCodeLink} target="_blank">
-              <p className="flex items-center gap-2">
-                <FaLink className="text-[#00d7bb]" /> Client Code Link
-              </p>
-            </Link>
-          </div>
+
+          <Link href={`/projects/${project._id}`}>
+            <button className="mt-10 px-4 py-2 text-lg shadow-2xl font-semibold text-center text-white transition duration-300 hover:from-[#1fb385] hover:to-[#24dfde] ease bg-gradient-to-br from-[#1fb385] to-[#24dfde] md:w-auto">
+              <p className="flex items-center gap-2">See Details</p>
+            </button>
+          </Link>
         </div>
       </div>
     </div>

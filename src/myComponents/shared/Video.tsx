@@ -7,22 +7,11 @@ import Link from "next/link";
 import { Typewriter } from "react-simple-typewriter";
 import Navbar from "./Navbar";
 import NavModal from "../modals/NavModal";
-import ProfilePopOver from "../modals/ProfilePopOver";
 import { ModeToggle } from "./ModeToggle";
-import { useUser } from "@/context/UserContext";
 
-type UserProps = {
-  user?: {
-    name?: string | null | undefined;
-    email?: string | null | undefined;
-    image?: string | null | undefined;
-  };
-};
-
-const Video = ({ session }: { session: UserProps | null }) => {
+const Video = () => {
   const [showModal, setShowModal] = useState(false);
   const [scrollY, setScrollY] = useState(0);
-  const { user } = useUser();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,7 +27,7 @@ const Video = ({ session }: { session: UserProps | null }) => {
 
   return (
     <div className="relative h-screen w-full overflow-hidden">
-      {scrollY > 200 && <Navbar session={session}></Navbar>}
+      {scrollY > 200 && <Navbar></Navbar>}
       {/* Background Video */}
       <video
         autoPlay
@@ -75,21 +64,6 @@ const Video = ({ session }: { session: UserProps | null }) => {
                 onClick={() => setShowModal(true)}
                 className="font-medium text-3xl"
               />
-            </div>
-            <div>
-              {session?.user || user ? (
-                <div>
-                  <ProfilePopOver session={session}></ProfilePopOver>
-                </div>
-              ) : (
-                <div>
-                  <Link href="/login">
-                    <button className="bg-[#22252c] text-white md:py-2 px-2 md:px-4 rounded-none font-semibold text-base md:text-lg text-center hover:bg-[#28ddd5] transition-colors hover:text-black">
-                      Sign In
-                    </button>
-                  </Link>
-                </div>
-              )}
             </div>
             <div>
               <ModeToggle />

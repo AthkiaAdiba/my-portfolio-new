@@ -1,9 +1,7 @@
 import ProjectsAndBlogsBanner from "@/myComponents/shared/ProjectsAndBlogsBanner";
 import { TFetchedProject } from "@/types/projectType";
 import { getAllProject } from "@/utils/actions/project";
-import { authOptions } from "@/utils/authOptions";
 import { Metadata } from "next";
-import { getServerSession } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
 import { IoIosArrowForward } from "react-icons/io";
@@ -15,13 +13,12 @@ export const metadata: Metadata = {
 };
 
 const ProjectsPage = async () => {
-  const session = await getServerSession(authOptions);
   const projectsData = await getAllProject();
   const projects = projectsData?.data;
 
   return (
     <div>
-      <ProjectsAndBlogsBanner session={session}></ProjectsAndBlogsBanner>
+      <ProjectsAndBlogsBanner></ProjectsAndBlogsBanner>
       <div className="min-h-screen px-2 lg:px-[13%] bg-[#22252c]">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5 py-24">
           {projects?.map((project: TFetchedProject) => (

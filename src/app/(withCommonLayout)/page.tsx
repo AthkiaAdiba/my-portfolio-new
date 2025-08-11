@@ -6,9 +6,7 @@ import HomeBlogs from "@/myComponents/uiComponent/HomeBlogs";
 import HomeProjects from "@/myComponents/uiComponent/HomeProjects";
 import Services from "@/myComponents/uiComponent/Services";
 import Skills from "@/myComponents/uiComponent/Skills";
-import { authOptions } from "@/utils/authOptions";
 import { Metadata } from "next";
-import { getServerSession } from "next-auth";
 
 export const metadata: Metadata = {
   title: "Athkia Adiba Tonne | Home",
@@ -17,11 +15,10 @@ export const metadata: Metadata = {
 };
 
 const HomePage = async () => {
-  const session = await getServerSession(authOptions);
-
+  console.log("hello");
   return (
     <div>
-      <Video session={session}></Video>
+      <Video></Video>
       <div id="aboutMe">
         <AboutMe />
       </div>

@@ -5,17 +5,13 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { RiMenu3Fill } from "react-icons/ri";
-import ProfilePopOver from "../modals/ProfilePopOver";
 import { ModeToggle } from "./ModeToggle";
 import NavModal from "../modals/NavModal";
-import { UserProps } from "@/types/projectType";
 import Navbar from "./Navbar";
-import { useUser } from "@/context/UserContext";
 
-const ProjectsAndBlogsBanner = ({ session }: { session: UserProps | null }) => {
+const ProjectsAndBlogsBanner = () => {
   const [showModal, setShowModal] = useState(false);
   const [scrollY, setScrollY] = useState(0);
-  const { user } = useUser();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,7 +27,7 @@ const ProjectsAndBlogsBanner = ({ session }: { session: UserProps | null }) => {
 
   return (
     <div className="relative h-[400px]">
-      {scrollY > 200 && <Navbar session={session}></Navbar>}
+      {scrollY > 200 && <Navbar></Navbar>}
       <Image
         className="h-[400px] w-full absolute"
         src="/projectsBanner.jpg"
@@ -66,19 +62,6 @@ const ProjectsAndBlogsBanner = ({ session }: { session: UserProps | null }) => {
                 onClick={() => setShowModal(true)}
                 className="font-medium text-3xl"
               />
-            </div>
-            <div>
-              {session?.user || user ? (
-                <div>
-                  <ProfilePopOver session={session}></ProfilePopOver>
-                </div>
-              ) : (
-                <Link href="/login">
-                  <button className="w-full flex items-center justify-center gap-2 bg-[#22252c] text-white py-2 px-4 rounded-none font-semibold text-lg text-center hover:bg-[#28ddd5] transition-colors hover:text-black">
-                    Sign In
-                  </button>
-                </Link>
-              )}
             </div>
             <div>
               <ModeToggle />

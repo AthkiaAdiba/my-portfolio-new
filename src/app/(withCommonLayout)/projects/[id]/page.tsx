@@ -2,8 +2,6 @@ import ProjectsAndBlogsBanner from "@/myComponents/shared/ProjectsAndBlogsBanner
 import SwiperCard from "@/myComponents/uiComponent/SwiperCard";
 import { TFetchedProject } from "@/types/projectType";
 import { getSingleProject } from "@/utils/actions/project";
-import { authOptions } from "@/utils/authOptions";
-import { getServerSession } from "next-auth";
 import Link from "next/link";
 import { FaLink } from "react-icons/fa";
 import { GrTechnology } from "react-icons/gr";
@@ -31,7 +29,6 @@ const ProjectDetailsPage = async ({
 }: {
   params: Promise<{ id: string }>;
 }) => {
-  const session = await getServerSession(authOptions);
   const { id } = await params;
 
   const projectData = await getSingleProject(id);
@@ -39,7 +36,7 @@ const ProjectDetailsPage = async ({
 
   return (
     <div>
-      <ProjectsAndBlogsBanner session={session}></ProjectsAndBlogsBanner>
+      <ProjectsAndBlogsBanner></ProjectsAndBlogsBanner>
       <div className="min-h-screen px-2 lg:px-[13%] bg-[#22252c]">
         <div className="pt-24 pb-16">
           <div className="h-[600px] w-full">

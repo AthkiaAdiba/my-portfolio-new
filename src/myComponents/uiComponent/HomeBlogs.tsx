@@ -9,6 +9,11 @@ const HomeBlogs = async () => {
   const blogsData = await getAllBlogs();
   const blogs = blogsData?.data;
 
+  // Function to strip HTML tags
+  const stripHtml = (html: string) => {
+    return html.replace(/<[^>]*>/g, "");
+  };
+
   return (
     <div className="bg-[#22252c] pt-28">
       <h1
@@ -45,7 +50,7 @@ const HomeBlogs = async () => {
                   /<span className="ml-2">{blog?.category}</span>
                 </p>
                 <p className="text-slate-200 mt-3 mb-5">
-                  {blog?.content.slice(0, 158)}...
+                  {stripHtml(blog?.content).slice(0, 158)}...
                 </p>
                 <Link href={`/blogs/${blog?._id}`} className="mt-auto">
                   <button className="px-5 py-3 text-center text-white hover:text-black transition duration-300 hover:from-[#1fb385] hover:to-[#24dfde] ease bg-gradient-to-br from-[#1fb385] to-[#24dfde] md:w-auto">

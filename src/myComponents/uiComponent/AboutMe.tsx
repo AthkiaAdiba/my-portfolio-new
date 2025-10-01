@@ -44,12 +44,14 @@ const AboutMe = () => {
           Node.js, Express.js, MongoDB, Mongoose, SQL, PostgreSQL, Prisma, and
           Tailwind CSS. I’m passionate about transforming ideas into impactful
           digital solutions and continuously expanding my skills. Alongside
-          full-stack development, I’m want to explore Docker, Kubernetes, Cloud
-          infrastructure, Linux system operations, Microsoft Azure, AWS, Vitest,
-          Jest, and GraphQL, to become a well-rounded developer with strong
-          DevOps capabilities.
+          full-stack development, I want to be a DevOps engineer. That is why I
+          have learned Docker, AWS, CI/CD pipelines, Linux (basic), and NGINX.
+          Now I am exploring Vitest and React Testing Library to enhance
+          automation and quality assurance. I also want to explore Kubernetes,
+          Linux system operations, Microsoft Azure, Vitest, and GraphQL to
+          become a well-rounded developer with strong DevOps capabilities.
         </p>
-        <p className="text-xl">
+        {/* <p className="text-xl">
           <span className="text-[#00d7bb] font-bold">NAME:</span> Athkia Adiba
           Tonne
         </p>
@@ -68,7 +70,7 @@ const AboutMe = () => {
         <p className="text-xl">
           <span className="text-[#00d7bb] font-bold">E-MAIL:</span>{" "}
           athkiaadiba@gmail.com
-        </p>
+        </p> */}
       </div>
     </div>
 

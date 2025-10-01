@@ -16,6 +16,7 @@ import {
 import { RiNextjsFill, RiTailwindCssFill } from "react-icons/ri";
 import { BiLogoPostgresql } from "react-icons/bi";
 import { PiFileSqlBold } from "react-icons/pi";
+import { FaPython } from "react-icons/fa";
 
 // icon map
 const iconMap: any = {
@@ -37,6 +38,7 @@ const iconMap: any = {
   Sql: <PiFileSqlBold />,
   Docker: <IoLogoDocker />,
   AWS: <FaAws />,
+  Python: <FaPython />,
 };
 
 const Skills = () => {

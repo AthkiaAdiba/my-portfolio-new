@@ -47,7 +47,7 @@ const NavModal = ({ showModal, setShowModal }: NavModalProps) => {
             <div className="relative flex-auto text-center space-y-3">
               <Link href="/" onClick={() => setShowModal(false)}>
                 <p className="text-3xl leading-relaxed text-white hover:text-[#00d7bb]">
-                  HOME
+                  HOMEa
                 </p>
               </Link>
               <Link href="#aboutMe" onClick={() => setShowModal(false)}>
